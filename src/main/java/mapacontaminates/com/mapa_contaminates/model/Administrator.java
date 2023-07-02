@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="adminstrator")
@@ -13,15 +15,16 @@ public class Administrator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private Long id;
+    @NotEmpty
     private String pasword;
+    @NotEmpty
     private String names;
+    @NotEmpty
     private String last_names;
 
 
-
-
-    
     public Administrator() {
     }
 

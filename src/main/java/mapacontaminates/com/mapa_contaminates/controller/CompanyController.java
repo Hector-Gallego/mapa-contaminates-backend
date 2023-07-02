@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import mapacontaminates.com.mapa_contaminates.model.Company;
 import mapacontaminates.com.mapa_contaminates.service.company.ICompanyService;
 
 @RestController
-@RequestMapping("/api/company")
+@RequestMapping("/api/companys")
 public class CompanyController {
 
 
@@ -38,7 +39,7 @@ public class CompanyController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Company> updateCompany(@PathVariable Long id, @RequestBody Company company ){
+    public ResponseEntity<Company> updateCompany(@Valid @PathVariable Long id, @RequestBody Company company ){
         return new ResponseEntity<>(companyService.updateCompany(company, id), HttpStatus.OK);
     }
 
@@ -49,7 +50,7 @@ public class CompanyController {
     }
 
    @PostMapping
-   public ResponseEntity<Company> createCompany(@RequestBody Company company){
+   public ResponseEntity<Company> createCompany(@Valid @RequestBody Company company){
       return new ResponseEntity<>(companyService.createCompany(company), HttpStatus.OK);
    }
 

@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import mapacontaminates.com.mapa_contaminates.model.Administrator;
 import mapacontaminates.com.mapa_contaminates.service.administrator.IAdministratorService;
 
 @RestController
-@RequestMapping("/api/administrator")
+@RequestMapping("/api/administrators")
 public class AdministratorController {
 
 
@@ -38,12 +39,12 @@ public class AdministratorController {
     }
 
     @PostMapping
-    public ResponseEntity<Administrator> createAdministrator(@RequestBody Administrator admin){
+    public ResponseEntity<Administrator> createAdministrator(@Valid @RequestBody Administrator admin){
         return new ResponseEntity<>(administratorService.createAdministrator(admin), HttpStatus.OK);
 
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Administrator> updateAdministrator(@PathVariable Long id, @RequestBody Administrator admin){
+    public ResponseEntity<Administrator> updateAdministrator(@Valid @PathVariable Long id, @RequestBody Administrator admin){
 
         return new ResponseEntity<>(administratorService.updateAdministrator(admin, id), HttpStatus.OK);
         

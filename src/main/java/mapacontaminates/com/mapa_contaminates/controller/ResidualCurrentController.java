@@ -13,7 +13,7 @@ import mapacontaminates.com.mapa_contaminates.model.ResidualCurrent;
 import mapacontaminates.com.mapa_contaminates.service.residual_current.IResidualCurrentService;
 
 @RestController
-@RequestMapping("/api/residualcurrent")
+@RequestMapping("/api/residualcurrents")
 public class ResidualCurrentController {
 
 
@@ -25,9 +25,7 @@ public class ResidualCurrentController {
 
     @GetMapping
     public ResponseEntity<List<ResidualCurrent>> getAllResidualCurrent(){
-
         return new ResponseEntity<>(residualCurrentService.getAllresidualCurrents(), HttpStatus.OK);
-  
     }
 
     @GetMapping("/{id}")

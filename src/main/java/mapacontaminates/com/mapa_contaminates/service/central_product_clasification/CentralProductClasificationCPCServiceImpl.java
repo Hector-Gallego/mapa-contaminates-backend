@@ -1,6 +1,7 @@
 package mapacontaminates.com.mapa_contaminates.service.central_product_clasification;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,7 @@ public class CentralProductClasificationCPCServiceImpl implements ICentralProduc
     @Override
     @Transactional(readOnly = true)
     public CentralProductClasificationCPC getCentralProductClasificationCPClById(Long id) {
-        return centralProductClasificationCPCCPCRepository.findById(id).orElseThrow();
+        return centralProductClasificationCPCCPCRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
     }
     
 }

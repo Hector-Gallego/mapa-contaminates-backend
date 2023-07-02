@@ -1,6 +1,7 @@
 package mapacontaminates.com.mapa_contaminates.service.administrator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class AdministratorServiceImpl implements IAdministratorService{
     @Override
     @Transactional(readOnly = true)
     public Administrator getAdministratorById(long id) {
-        return administratorRepository.findById(id).orElseThrow();
+        return administratorRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
     }
 
     @Override
@@ -41,19 +42,15 @@ public class AdministratorServiceImpl implements IAdministratorService{
     @Override
     @Transactional
     public Administrator createAdministrator(Administrator admin) {
-
         return administratorRepository.save(admin);
-
     }
 
     @Override
     @Transactional
     public Administrator updateAdministrator(Administrator admin, Long id) {
         
-        Administrator adminPersist = administratorRepository.findById(id).orElseThrow();
-
+        Administrator adminPersist = getAdministratorById(id);
         BeanUtils.copyProperties(admin, adminPersist, "id");
-
         return createAdministrator(admin);
     }
     

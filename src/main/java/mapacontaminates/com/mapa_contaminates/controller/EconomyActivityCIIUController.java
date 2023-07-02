@@ -13,7 +13,7 @@ import mapacontaminates.com.mapa_contaminates.model.ecomomy_activity_ciiu.Econom
 import mapacontaminates.com.mapa_contaminates.service.economy_activity.IEconomyActivityCIIUService;
 
 @RestController
-@RequestMapping("/api/economy_activity")
+@RequestMapping("/api/economyactivities")
 public class EconomyActivityCIIUController {
 
     private final IEconomyActivityCIIUService economyActivityCIIUService;

@@ -13,6 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import mapacontaminates.com.mapa_contaminates.model.ecomomy_activity_ciiu.EconomyActivityCIIU;
 
 @Entity
@@ -22,10 +24,12 @@ public class ResidualCurrent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private Long id;
 
     private String code;
     @Column(columnDefinition = "TEXT")
+    @NotEmpty
     private String name;
     
     @ManyToMany(mappedBy = "residualCurrents")

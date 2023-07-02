@@ -1,6 +1,7 @@
 package mapacontaminates.com.mapa_contaminates.service.economy_activity;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,12 @@ public class EconomyActivityCIIUServiceImpl implements IEconomyActivityCIIUServi
     @Override
     @Transactional(readOnly = true)
     public EconomyActivityCIIU getEconomicActivityCIIUById(Long id) {
-        return economyActivityCIIURepository.findById(id).orElseThrow();
+        return economyActivityCIIURepository.findById(id).orElseThrow(() -> new NoSuchElementException());
+    }
+
+    @Override
+    public List<EconomyActivityCIIU> getEconomyActivitysCIIUbyIds(List<Long> ids) {
+        return economyActivityCIIURepository.findAllById(ids);
     }
 
     

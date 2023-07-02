@@ -8,5 +8,6 @@ public interface IEconomyActivityCIIUService {
 
     List<EconomyActivityCIIU> getAllEconomicActivitysCIIU();
     EconomyActivityCIIU getEconomicActivityCIIUById(Long id);
+    List<EconomyActivityCIIU> getEconomyActivitysCIIUbyIds(List<Long> ids);
     
 }
