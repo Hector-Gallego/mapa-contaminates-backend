@@ -18,7 +18,7 @@ import mapacontaminates.com.mapa_contaminates.model.Company;
 import mapacontaminates.com.mapa_contaminates.service.company.ICompanyService;
 
 @RestController
-@RequestMapping("/api/companys")
+@RequestMapping("/api/companies")
 public class CompanyController {
 
 

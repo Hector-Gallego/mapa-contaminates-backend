@@ -20,7 +20,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import mapacontaminates.com.mapa_contaminates.model.Company;
 import mapacontaminates.com.mapa_contaminates.model.ResidualCurrent;
 import mapacontaminates.com.mapa_contaminates.model.central_product_clasification_cpc.CentralProductClasificationCPC;
@@ -31,7 +30,6 @@ public class EconomyActivityCIIU{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     private Long id;
     @NotEmpty
     private String code;

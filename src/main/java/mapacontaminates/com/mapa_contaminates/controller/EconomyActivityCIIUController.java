@@ -31,5 +31,10 @@ public class EconomyActivityCIIUController {
         return new ResponseEntity<>(economyActivityCIIUService.getEconomicActivityCIIUById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/code/{code}")
+    public ResponseEntity<EconomyActivityCIIU> getEconomyActivityByCode(@PathVariable String code){
+        return new ResponseEntity<>(economyActivityCIIUService.gEconomycActivityCIIUByCode(code), HttpStatus.OK);
+    }
+
     
 }

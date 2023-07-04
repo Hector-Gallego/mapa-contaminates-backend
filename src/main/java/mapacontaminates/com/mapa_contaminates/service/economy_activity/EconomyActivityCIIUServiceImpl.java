@@ -31,8 +31,15 @@ public class EconomyActivityCIIUServiceImpl implements IEconomyActivityCIIUServi
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<EconomyActivityCIIU> getEconomyActivitysCIIUbyIds(List<Long> ids) {
         return economyActivityCIIURepository.findAllById(ids);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public EconomyActivityCIIU gEconomycActivityCIIUByCode(String code) {
+        return economyActivityCIIURepository.findByCode(code).orElseThrow(() -> new NoSuchElementException());
     }
 
     
