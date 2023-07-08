@@ -8,8 +8,8 @@
 		<version>3.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>mapacontaminates.com</groupId>
-	<artifactId>mapa_contaminates</artifactId>
+	<groupId>mapacontaminantes.com</groupId>
+	<artifactId>mapa_contaminantes</artifactId>
 	<version>1</version>
 	<name>mapa_contaminates</name>
 	<description>Demo project for Spring Boot</description>
