@@ -5,6 +5,9 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import mapacontaminantes.com.mapa_contaminantes.model.Company;
@@ -49,11 +52,11 @@ public class CompanyServiceImpl implements ICompanyService {
                 .map(EconomyActivityCIIU::getId)
                 .collect(Collectors.toList());
 
-        List<EconomyActivityCIIU> economyActivityCIIUs = economyActivityCIIUService.getEconomyActivitysCIIUbyIds(economyActivityCIIUsIds);
+        List<EconomyActivityCIIU> economyActivityCIIUs = economyActivityCIIUService
+                .getEconomyActivitysCIIUbyIds(economyActivityCIIUsIds);
 
         company.setEconomyActivityCIIUs(economyActivityCIIUs);
         return companyRepository.save(company);
-
 
     }
 
@@ -64,6 +67,13 @@ public class CompanyServiceImpl implements ICompanyService {
         BeanUtils.copyProperties(company, companyPersist, "id");
         return createCompany(companyPersist);
 
+    }
+
+    @Override
+    public Page<Company> getAllCompanysByPages(int page, int size) {
+
+        Pageable paging = PageRequest.of(page, size);
+        return companyRepository.findAll(paging);
     }
 
 }
