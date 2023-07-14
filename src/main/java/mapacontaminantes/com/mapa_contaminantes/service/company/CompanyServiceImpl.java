@@ -76,4 +76,10 @@ public class CompanyServiceImpl implements ICompanyService {
         return companyRepository.findAll(paging);
     }
 
+    @Override
+    public List<Company> getCompaniesByterm(String term) {
+        return companyRepository.findAllByNameContainingIgnoreCase(term);
+    }
+
+   
 }

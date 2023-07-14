@@ -42,6 +42,11 @@ public class CompanyController {
         return new ResponseEntity<Page<Company>>(companyService.getAllCompanysByPages(page, size), HttpStatus.OK);
     }
 
+    @GetMapping("/term/{term}")
+    public ResponseEntity<List<Company>> getCompaniesByTerm(@PathVariable String term){
+        return new ResponseEntity<List<Company>>(companyService.getCompaniesByterm(term), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Company> getCompany(@PathVariable Long id) {
         return new ResponseEntity<>(companyService.getCompanyById(id), HttpStatus.OK);

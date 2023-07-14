@@ -15,5 +15,7 @@ public interface ICompanyService {
     Company createCompany(Company company);
     Company updateCompany(Company company, Long id);
     Page<Company> getAllCompanysByPages(int page, int size);
+    List<Company> getCompaniesByterm(String term);
+   
     
 }
