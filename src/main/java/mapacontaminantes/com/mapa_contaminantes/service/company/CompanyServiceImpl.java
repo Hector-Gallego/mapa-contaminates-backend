@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import mapacontaminantes.com.mapa_contaminantes.model.Company;
+import mapacontaminantes.com.mapa_contaminantes.model.CompanyDto;
+import mapacontaminantes.com.mapa_contaminantes.model.MapDto;
 import mapacontaminantes.com.mapa_contaminantes.model.ecomomy_activity_ciiu.EconomyActivityCIIU;
 import mapacontaminantes.com.mapa_contaminantes.repository.CompanyRepository;
 import mapacontaminantes.com.mapa_contaminantes.service.economy_activity.IEconomyActivityCIIUService;
@@ -20,16 +22,25 @@ public class CompanyServiceImpl implements ICompanyService {
 
     private final CompanyRepository companyRepository;
     private final IEconomyActivityCIIUService economyActivityCIIUService;
+    private final MapDto mapDto;
+
+   
 
     public CompanyServiceImpl(CompanyRepository companyRepository,
-            IEconomyActivityCIIUService economyActivityCIIUService) {
+            IEconomyActivityCIIUService economyActivityCIIUService, MapDto mapDto) {
         this.companyRepository = companyRepository;
         this.economyActivityCIIUService = economyActivityCIIUService;
+        this.mapDto = mapDto;
     }
 
     @Override
-    public List<Company> getAllCompanys() {
-        return companyRepository.findAll();
+    public List<CompanyDto> getAllCompanys() {
+
+        List<Company> companies =  companyRepository.findAll();
+
+            return companies.stream()
+                .map(mapDto::mapToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

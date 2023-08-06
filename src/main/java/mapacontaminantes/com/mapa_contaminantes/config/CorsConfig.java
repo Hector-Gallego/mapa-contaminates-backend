@@ -15,7 +15,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Ruta de tu API
-                        .allowedOrigins("http://localhost:4200") // Dominio del cliente Angular
+                        .allowedOrigins("http://mapa-contaminantes.s3-website.us-east-2.amazonaws.com/","http://localhost:4200") // Dominio del cliente Angular
                         .allowedMethods("GET", "POST", "PUT", "DELETE") // Métodos HTTP permitidos
                         .allowedHeaders("*"); // Headers permitidos
             }

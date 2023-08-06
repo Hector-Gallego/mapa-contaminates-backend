@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.TotalAllStatistics;
+import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.TotalStatisticsByCompanyDto;
 import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.StatisticsDto;
-import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.TotalStatisticsDto;
+import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.TotalAllStatisticsDto;
 import mapacontaminantes.com.mapa_contaminantes.service.statistics.IStatisticsService;
 
 @RestController
@@ -45,17 +45,17 @@ public class staticsController {
     }
 
     @GetMapping("/company-count-residual-activity")
-    public List<TotalAllStatistics> getCompaniesCountResidualsAndActivities() {
+    public List<TotalStatisticsByCompanyDto> getCompaniesCountResidualsAndActivities() {
         return statisticsService.getCompaniesCountResidualsAndActivities();
     }
 
     @GetMapping("/total-statistics")
-    public TotalStatisticsDto getCountAllCompaniesCountResidualsAndActivities() {
+    public TotalAllStatisticsDto getCountAllCompaniesCountResidualsAndActivities() {
         return statisticsService.getCountAllCompaniesCountResidualsAndActivities();
     }
 
     @GetMapping("/total-all-statistics")
-    public TotalStatisticsDto getCountAllCompanysActivitiesResiduals() {
+    public TotalAllStatisticsDto getCountAllCompanysActivitiesResiduals() {
         return statisticsService.getCountAllCompanysActivitiesResiduals();
     }
 }

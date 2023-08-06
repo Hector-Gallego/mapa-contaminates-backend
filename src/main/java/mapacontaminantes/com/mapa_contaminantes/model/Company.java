@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,7 +34,7 @@ public class Company {
     private String adress; 
 
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "company_as_economy_activity_ciiu",
                 joinColumns = @JoinColumn(name = "company_id"),
                 inverseJoinColumns = @JoinColumn(name = "economy_activity_ciiu_id"),

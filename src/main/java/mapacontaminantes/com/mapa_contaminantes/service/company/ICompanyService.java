@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import mapacontaminantes.com.mapa_contaminantes.model.Company;
+import mapacontaminantes.com.mapa_contaminantes.model.CompanyDto;
 
 public interface ICompanyService {
 
     
-    List<Company> getAllCompanys();
+    List<CompanyDto> getAllCompanys();
     Company getCompanyById(Long id);
     void deleteCompanyById(Long id);
     Company createCompany(Company company);

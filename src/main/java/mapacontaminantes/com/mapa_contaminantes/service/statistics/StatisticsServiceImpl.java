@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.TotalAllStatistics;
+import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.TotalStatisticsByCompanyDto;
 import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.StatisticsDto;
-import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.TotalStatisticsDto;
+import mapacontaminantes.com.mapa_contaminantes.model.statistics_dto.TotalAllStatisticsDto;
 import mapacontaminantes.com.mapa_contaminantes.repository.statistics_repositories.CompanyStatiticsRepository;
 import mapacontaminantes.com.mapa_contaminantes.repository.statistics_repositories.EconomyActivtyStatisticsRepository;
 import mapacontaminantes.com.mapa_contaminantes.repository.statistics_repositories.ResidualCurrentStatisticsRepository;
@@ -85,18 +85,18 @@ public class StatisticsServiceImpl implements IStatisticsService {
     }
 
     @Override
-    public List<TotalAllStatistics> getCompaniesCountResidualsAndActivities() {
+    public List<TotalStatisticsByCompanyDto> getCompaniesCountResidualsAndActivities() {
 
         List<Object[]> results = companyStatiticsRepository.getCompaniesCountResidualsAndActivities();
 
-        List<TotalAllStatistics> companyResidualEconomyActivity = results.stream()
+        List<TotalStatisticsByCompanyDto> companyResidualEconomyActivity = results.stream()
                 .map(result -> {
                     String companyName = (String) result[0];
                     Long residualCount = (Long) result[1];
                     Long activityCount = (Long) result[2];
-                    return new TotalAllStatistics(companyName, residualCount, activityCount);
+                    return new TotalStatisticsByCompanyDto(companyName, residualCount, activityCount);
                 })
-                .sorted(Comparator.comparingLong(TotalAllStatistics::getActivityCount).reversed())
+                .sorted(Comparator.comparingLong(TotalStatisticsByCompanyDto::getActivityCount).reversed())
                 .limit(10)
                 .collect(Collectors.toList());
 
@@ -105,7 +105,7 @@ public class StatisticsServiceImpl implements IStatisticsService {
     }
 
     @Override
-    public TotalStatisticsDto getCountAllCompaniesCountResidualsAndActivities() {
+    public TotalAllStatisticsDto getCountAllCompaniesCountResidualsAndActivities() {
         List<Object[]> results = companyStatiticsRepository.getCountAllCompaniesCountResidualsAndActivities();
 
         if (!results.isEmpty()) {
@@ -114,20 +114,20 @@ public class StatisticsServiceImpl implements IStatisticsService {
             Long economyActivityCount = (Long) result[1];
             Long residualCurrentCount = (Long) result[2];
 
-            return new TotalStatisticsDto(companyCount, economyActivityCount, residualCurrentCount);
+            return new TotalAllStatisticsDto(companyCount, economyActivityCount, residualCurrentCount);
         }
 
         return null; // Manejar caso de resultados vacíos
     }
 
     @Override
-    public TotalStatisticsDto getCountAllCompanysActivitiesResiduals() {
+    public TotalAllStatisticsDto getCountAllCompanysActivitiesResiduals() {
 
         Long totalCompaniesCount = companyStatiticsRepository.getAllCountCompanies();
         Long totalEconomyActivitiesCount = companyStatiticsRepository.getAllCountEconomyActivities();
         Long totalResidualCurrentsCount = companyStatiticsRepository.getAllCountResidualCurrents();
 
-        return new TotalStatisticsDto(totalCompaniesCount, totalEconomyActivitiesCount, totalResidualCurrentsCount);
+        return new TotalAllStatisticsDto(totalCompaniesCount, totalEconomyActivitiesCount, totalResidualCurrentsCount);
 
     }
 

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import mapacontaminantes.com.mapa_contaminantes.model.Company;
+import mapacontaminantes.com.mapa_contaminantes.model.CompanyDto;
 import mapacontaminantes.com.mapa_contaminantes.service.company.ICompanyService;
 
 @RestController
@@ -30,7 +31,7 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Company>> getAllCompanys() {
+    public ResponseEntity<List<CompanyDto>> getAllCompanys() {
         return new ResponseEntity<>(companyService.getAllCompanys(), HttpStatus.OK);
     }
 

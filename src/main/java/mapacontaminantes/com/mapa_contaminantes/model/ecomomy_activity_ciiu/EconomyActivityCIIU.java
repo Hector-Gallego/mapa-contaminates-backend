@@ -52,7 +52,9 @@ public class EconomyActivityCIIU{
                 joinColumns = @JoinColumn(name="economy_activity_ciiu_id"),
                 inverseJoinColumns = @JoinColumn(name="product_central_clasification_id"),
                 uniqueConstraints = @UniqueConstraint(columnNames = {"economy_activity_ciiu_id","product_central_clasification_id"}))
+
     private List<CentralProductClasificationCPC> centralProductClasificationCPCs = new ArrayList<>();
+
    
 
     @ManyToMany(mappedBy = "economyActivityCIIUs")
@@ -62,6 +64,7 @@ public class EconomyActivityCIIU{
 
     @ManyToOne
     @JoinColumn(name = "fk_group_ciiu_id")
+    @JsonIgnore
     private GroupCIIU groupCIIU;
 
     

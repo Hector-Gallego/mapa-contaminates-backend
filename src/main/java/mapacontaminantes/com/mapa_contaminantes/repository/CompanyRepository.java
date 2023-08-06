@@ -10,6 +10,7 @@ import mapacontaminantes.com.mapa_contaminantes.model.Company;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
 
+    
     Page<Company> findAll(Pageable pageable);
 
     List<Company> findAllByNameContainingIgnoreCase(String term);

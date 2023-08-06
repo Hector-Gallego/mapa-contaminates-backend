@@ -18,7 +18,7 @@ public class JSONController {
 
     @GetMapping("/data_water_bolivar")
     public ResponseEntity<Object> getJSONData() throws IOException {
-        Resource resource = new ClassPathResource("data_water_bolivar.geojson");
+        Resource resource = new ClassPathResource("data_water_bolivar_4.geojson");
 
         if (!resource.exists()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
